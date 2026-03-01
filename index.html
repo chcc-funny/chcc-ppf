@@ -485,7 +485,7 @@
                         <tbody>
                             <tr data-ppf-id="1">
                                 <td>1</td>
-                                <td>天穹系列</td>
+                                <td>天穹系列（子品牌）</td>
                                 <td>7.5mil</td>
                                 <td>5年</td>
                                 <td class="price-new">¥3,980</td>
@@ -493,7 +493,7 @@
                             </tr>
                             <tr data-ppf-id="2">
                                 <td>2</td>
-                                <td>Galaxy 天穹 Pro</td>
+                                <td>Galaxy 天穹 Pro（子品牌）</td>
                                 <td>7.8mil</td>
                                 <td>5年</td>
                                 <td class="price-new">¥4,980</td>
@@ -1257,7 +1257,7 @@
         // ===== 车衣产品数据库 =====
         var PPF_DB = {
             1: {
-                name: '天穹系列',
+                name: '天穹系列（子品牌）',
                 series: '经济入门系列',
                 price: '¥3,980',
                 thickness: '7.5mil',
@@ -1276,7 +1276,7 @@
                 ]
             },
             2: {
-                name: 'Galaxy 天穹 Pro',
+                name: 'Galaxy 天穹 Pro（子品牌）',
                 series: '高性价比系列',
                 price: '¥4,980',
                 thickness: '7.8mil',
@@ -1648,10 +1648,16 @@
             // 柱状图：竞品对比（增加性价比维度）
             var barCtx = document.getElementById('barChart');
             if (barCtx) {
+                // 根据屏幕宽度选择标签
+                var isMobile = window.innerWidth < 768;
+                var labels = isMobile
+                    ? ['L PLUS', 'L领路者', '天穹Pro', '天穹', '3M高光50', '3M精英', '威固V3', '星际威', '龙膜G0', '龙小侠', 'XPEL']
+                    : ['L PLUS\n¥9,980', 'L领路者\n¥7,980', '天穹Pro\n¥4,980', '天穹系列\n¥3,980', '3M高光50\n¥8,800', '3M精英版\n¥6,980', '威固V3\n¥8,800', '星际威\n¥6,980', '龙膜G0\n¥8,800', '龙小侠\n¥5,980', 'XPEL\nPROTEX\n¥6,880'];
+
                 var barChart = new Chart(barCtx, {
                     type: 'bar',
                     data: {
-                        labels: ['L PLUS\n¥9,980', 'L领路者\n¥7,980', '天穹Pro\n¥4,980', '天穹系列\n¥3,980', '3M高光50\n¥8,800', '3M精英版\n¥6,980', '威固V3\n¥8,800', '星际威\n¥6,980', '龙膜G0\n¥8,800', '龙小侠\n¥5,980', 'XPEL\nPROTEX\n¥6,880'],
+                        labels: labels,
                         datasets: [
                             {
                                 label: '厚度 (mil)',
@@ -1699,6 +1705,10 @@
                             },
                             tooltip: {
                                 callbacks: {
+                                    title: function(context) {
+                                        var fullLabels = ['L PLUS ¥9,980', 'L领路者 ¥7,980', '天穹Pro ¥4,980', '天穹系列 ¥3,980', '3M高光50 ¥8,800', '3M精英版 ¥6,980', '威固V3 ¥8,800', '星际威 ¥6,980', '龙膜G0 ¥8,800', '龙小侠 ¥5,980', 'XPEL PROTEX ¥6,880'];
+                                        return fullLabels[context[0].dataIndex];
+                                    },
                                     label: function(context) {
                                         var label = context.dataset.label || '';
                                         if (label) {
@@ -1725,10 +1735,11 @@
                             x: {
                                 ticks: {
                                     font: {
-                                        size: window.innerWidth < 768 ? 7 : 9
+                                        size: window.innerWidth < 768 ? 8 : 9
                                     },
-                                    maxRotation: 0,
-                                    minRotation: 0
+                                    maxRotation: window.innerWidth < 768 ? 45 : 0,
+                                    minRotation: window.innerWidth < 768 ? 45 : 0,
+                                    autoSkip: false
                                 }
                             },
                             y: {
