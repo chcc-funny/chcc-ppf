@@ -383,6 +383,50 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* 图表容器样式 - 移动端优化 */
+        .chart-grid {
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .chart-container {
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            aspect-ratio: 1 / 1;
+        }
+
+        .chart-wrapper canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        @media (max-width: 768px) {
+            .chart-grid {
+                gap: 25px;
+                margin-bottom: 30px;
+            }
+
+            .chart-container {
+                padding: 20px;
+            }
+
+            .chart-container h4 {
+                font-size: 1rem !important;
+                margin-bottom: 15px !important;
+            }
+
+            .chart-wrapper {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -528,19 +572,23 @@
                     <h3 style="color: var(--cyan-deep); margin-bottom: 30px; font-size: 1.8rem; text-align: center;">
                         性能可视化对比</h3>
 
-                    <div class="grid-2" style="gap: 40px; margin-bottom: 40px;">
+                    <div class="grid-2 chart-grid">
                         <!-- 雷达图：前6款产品性能对比 -->
-                        <div class="quantum-glass-light" style="padding: 30px; border-radius: 20px;">
+                        <div class="quantum-glass-light chart-container">
                             <h4 style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
                                 前6款产品多维性能对比</h4>
-                            <canvas id="radarChart" width="400" height="400"></canvas>
+                            <div class="chart-wrapper">
+                                <canvas id="radarChart"></canvas>
+                            </div>
                         </div>
 
                         <!-- 柱状图：竞品对比 -->
-                        <div class="quantum-glass-light" style="padding: 30px; border-radius: 20px;">
+                        <div class="quantum-glass-light chart-container">
                             <h4 style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
                                 竞品厚度与质保对比</h4>
-                            <canvas id="barChart" width="400" height="400"></canvas>
+                            <div class="chart-wrapper">
+                                <canvas id="barChart"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1556,10 +1604,10 @@
                             legend: {
                                 position: 'bottom',
                                 labels: {
-                                    boxWidth: 12,
-                                    padding: 10,
+                                    boxWidth: window.innerWidth < 768 ? 10 : 12,
+                                    padding: window.innerWidth < 768 ? 6 : 10,
                                     font: {
-                                        size: 11
+                                        size: window.innerWidth < 768 ? 9 : 11
                                     }
                                 }
                             },
@@ -1583,12 +1631,12 @@
                                 ticks: {
                                     stepSize: 20,
                                     font: {
-                                        size: 10
+                                        size: window.innerWidth < 768 ? 8 : 10
                                     }
                                 },
                                 pointLabels: {
                                     font: {
-                                        size: 11
+                                        size: window.innerWidth < 768 ? 9 : 11
                                     }
                                 }
                             }
@@ -1642,10 +1690,10 @@
                             legend: {
                                 position: 'top',
                                 labels: {
-                                    boxWidth: 12,
-                                    padding: 12,
+                                    boxWidth: window.innerWidth < 768 ? 10 : 12,
+                                    padding: window.innerWidth < 768 ? 6 : 12,
                                     font: {
-                                        size: 11
+                                        size: window.innerWidth < 768 ? 9 : 11
                                     }
                                 }
                             },
@@ -1677,7 +1725,7 @@
                             x: {
                                 ticks: {
                                     font: {
-                                        size: 9
+                                        size: window.innerWidth < 768 ? 7 : 9
                                     },
                                     maxRotation: 0,
                                     minRotation: 0
@@ -1688,15 +1736,15 @@
                                 display: true,
                                 position: 'left',
                                 title: {
-                                    display: true,
+                                    display: window.innerWidth >= 768,
                                     text: '厚度 (mil) / 性价比值×10',
                                     font: {
-                                        size: 10
+                                        size: window.innerWidth < 768 ? 8 : 10
                                     }
                                 },
                                 ticks: {
                                     font: {
-                                        size: 9
+                                        size: window.innerWidth < 768 ? 7 : 9
                                     }
                                 },
                                 beginAtZero: true,
@@ -1707,15 +1755,15 @@
                                 display: true,
                                 position: 'right',
                                 title: {
-                                    display: true,
+                                    display: window.innerWidth >= 768,
                                     text: '质保 (年)',
                                     font: {
-                                        size: 10
+                                        size: window.innerWidth < 768 ? 8 : 10
                                     }
                                 },
                                 ticks: {
                                     font: {
-                                        size: 9
+                                        size: window.innerWidth < 768 ? 7 : 9
                                     }
                                 },
                                 grid: {
