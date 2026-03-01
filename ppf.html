@@ -1,0 +1,1736 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>隐形车衣（PPF）· 圣戈班量子膜 - CHCC广州壕马唯一运营中心</title>
+    <meta name="description" content="圣戈班量子膜隐形车衣（PPF），359年品质传承，守护爱车原厂漆面，10年质保，官方授权运营中心">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        /* ===== 车衣产品参数弹窗样式 ===== */
+        .ppf-modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .ppf-modal-overlay.visible {
+            display: flex;
+        }
+
+        .ppf-modal {
+            background: rgba(12, 28, 36, 0.85);
+            backdrop-filter: blur(32px) saturate(1.8);
+            -webkit-backdrop-filter: blur(32px) saturate(1.8);
+            border: 1px solid rgba(94, 234, 212, 0.2);
+            border-radius: 24px;
+            max-width: 700px;
+            width: 100%;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(94, 234, 212, 0.12);
+            animation: ppfModalIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @keyframes ppfModalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.88) translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .ppf-modal::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .ppf-modal::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .ppf-modal::-webkit-scrollbar-thumb {
+            background: rgba(94, 234, 212, 0.35);
+            border-radius: 3px;
+        }
+
+        .ppf-modal-close {
+            position: absolute;
+            top: 16px;
+            right: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: rgba(255, 255, 255, 0.75);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            z-index: 1;
+        }
+
+        .ppf-modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            transform: rotate(90deg);
+        }
+
+        .ppf-modal-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(94, 234, 212, 0.15);
+        }
+
+        .ppf-modal-series {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: rgba(94, 234, 212, 0.75);
+            text-transform: uppercase;
+            margin: 0 0 8px;
+        }
+
+        .ppf-modal-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0;
+        }
+
+        .ppf-modal-subtitle {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 6px;
+        }
+
+        .ppf-modal-section {
+            margin-bottom: 28px;
+        }
+
+        .ppf-modal-section-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            color: rgba(94, 234, 212, 0.85);
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ppf-modal-section-title::before {
+            content: '';
+            width: 4px;
+            height: 14px;
+            background: rgba(94, 234, 212, 0.6);
+            border-radius: 2px;
+        }
+
+        .ppf-params-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .ppf-param {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(94, 234, 212, 0.1);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+
+        .ppf-param-label {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 6px;
+            letter-spacing: 0.04em;
+        }
+
+        .ppf-param-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgba(94, 234, 212, 0.95);
+        }
+
+        .ppf-features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ppf-feature-item {
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 3px solid rgba(94, 234, 212, 0.5);
+            padding: 12px 16px;
+            border-radius: 6px;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .ppf-warranty-box {
+            background: rgba(30, 138, 154, 0.12);
+            border: 1px solid rgba(30, 138, 154, 0.25);
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .ppf-warranty-box strong {
+            color: rgba(94, 234, 212, 0.95);
+            font-size: 1.05rem;
+        }
+
+        .ppf-warranty-box span {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 0.9rem;
+        }
+
+        /* 鼠标悬停行 */
+        #tab-ppf-pricing tbody tr {
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        #tab-ppf-pricing tbody tr:hover {
+            background: rgba(30, 138, 154, 0.2) !important;
+        }
+
+        #tab-ppf-pricing tbody tr:active {
+            background: rgba(30, 138, 154, 0.3) !important;
+        }
+
+        .ppf-click-hint {
+            font-size: 0.75rem;
+            color: var(--cyan-deep);
+            font-weight: 600;
+            text-align: center;
+            margin-top: 10px;
+            letter-spacing: 0.03em;
+            opacity: 0.9;
+        }
+
+        .tap-icon-ppf {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 1px;
+            align-items: center;
+            margin-left: 6px;
+            margin-right: 2px;
+            vertical-align: middle;
+            animation: tap-down-ppf 1.3s ease-in-out infinite;
+        }
+
+        .tap-icon-ppf span {
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid var(--cyan-deep);
+            opacity: 0;
+        }
+
+        .tap-icon-ppf span:nth-child(1) {
+            animation: tap-seq-ppf 1.3s 0s ease-in-out infinite;
+        }
+
+        .tap-icon-ppf span:nth-child(2) {
+            animation: tap-seq-ppf 1.3s 0.2s ease-in-out infinite;
+        }
+
+        .tap-icon-ppf span:nth-child(3) {
+            animation: tap-seq-ppf 1.3s 0.4s ease-in-out infinite;
+        }
+
+        @keyframes tap-seq-ppf {
+
+            0%,
+            50%,
+            100% {
+                opacity: 0;
+            }
+
+            25% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes tap-down-ppf {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(3px);
+            }
+        }
+
+        /* 5层结构图 */
+        .structure-diagram {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 100%);
+            border: 1px solid rgba(94, 234, 212, 0.15);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .structure-layer {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(94, 234, 212, 0.2);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            transition: all 0.3s;
+        }
+
+        .structure-layer:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        .structure-layer:last-child {
+            margin-bottom: 0;
+        }
+
+        .layer-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--cyan-light) 0%, var(--cyan-deep) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .layer-content {
+            flex: 1;
+        }
+
+        .layer-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: rgba(94, 234, 212, 0.9);
+            margin-bottom: 4px;
+        }
+
+        .layer-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .ppf-params-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ppf-modal {
+                padding: 28px 24px;
+            }
+
+            .ppf-modal-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* 施工流程网格布局优化 */
+        #ppf-process .process-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        #ppf-process .process-img {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 992px) {
+            #ppf-process .process-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 背景动画画布（固定全屏，在内容之后） -->
+    <div id="bg-canvas" aria-hidden="true">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+    <!-- 顶部标签导航 -->
+    <nav class="top-tabs-nav" id="topNav">
+        <button class="tab-btn active" data-target="tab-ppf-pricing">车衣套餐价格</button>
+        <button class="tab-btn" data-target="tab-ppf-parameters">性能参数对比</button>
+        <button class="tab-btn" data-target="tab-ppf-intro">品牌介绍</button>
+        <button class="tab-btn" data-target="tab-ppf-service">施工售后</button>
+    </nav>
+
+    <!-- ============================
+         TAB 1: 车衣套餐价格（默认选中）
+         ============================ -->
+    <div id="tab-ppf-pricing" class="tab-pane active">
+
+        <!-- 车衣套餐价格 -->
+        <section class="pricing" id="ppf-pricing">
+            <div class="container">
+                <div class="section-header">
+                    <h2>车衣套餐价格体系</h2>
+                    <p>透明公开的价格，从入门到旗舰，满足各种预算与需求</p>
+                </div>
+
+                <div class="scroll-hint">
+                    <span class="ppf-click-hint" style="margin:0 8px 0 0;">
+                        点击列表获详细数据
+                        <span class="tap-icon-ppf"><span></span><span></span><span></span></span>
+                        ·
+                    </span>
+                    <span>左右滑动查看完整参数</span>
+                    <span class="hint-arrow"><span>›</span><span>›</span><span>›</span></span>
+                </div>
+
+                <div class="pricing-table-container quantum-glass-light">
+                    <table class="quantum-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>产品系列</th>
+                                <th>厚度</th>
+                                <th>质保年限</th>
+                                <th>官方指导价</th>
+                                <th>适合场景</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-ppf-id="1">
+                                <td>1</td>
+                                <td>天穹系列</td>
+                                <td>7.5mil</td>
+                                <td>5年</td>
+                                <td class="price-new">¥3,980</td>
+                                <td>经济入门 · 日常通勤</td>
+                            </tr>
+                            <tr data-ppf-id="2">
+                                <td>2</td>
+                                <td>Galaxy 天穹 Pro</td>
+                                <td>7.8mil</td>
+                                <td>5年</td>
+                                <td class="price-new">¥4,980</td>
+                                <td>高性价比 · 家用车首选</td>
+                            </tr>
+                            <tr data-ppf-id="3">
+                                <td>3</td>
+                                <td>L领路者</td>
+                                <td>8mil</td>
+                                <td>6年</td>
+                                <td class="price-new">¥7,980</td>
+                                <td>入门优选 · 品质之选</td>
+                            </tr>
+                            <tr data-ppf-id="4">
+                                <td>4</td>
+                                <td>L哑光</td>
+                                <td>8mil</td>
+                                <td>5年</td>
+                                <td class="price-new">¥8,980</td>
+                                <td>经济哑光 · 时尚个性</td>
+                            </tr>
+                            <tr data-ppf-id="5">
+                                <td>5</td>
+                                <td>L PLUS</td>
+                                <td>8.5mil</td>
+                                <td>7年</td>
+                                <td class="price-new">¥9,980</td>
+                                <td>经济升级 · 超值耐用</td>
+                            </tr>
+                            <tr data-ppf-id="6">
+                                <td>6</td>
+                                <td>T系列</td>
+                                <td>8mil</td>
+                                <td>7年</td>
+                                <td class="price-new">¥16,800</td>
+                                <td>标准防护 · 中端车型</td>
+                            </tr>
+                            <tr data-ppf-id="7">
+                                <td>7</td>
+                                <td>T PLUS</td>
+                                <td>8.5mil</td>
+                                <td>7年</td>
+                                <td class="price-new">¥19,800</td>
+                                <td>升级防护 · 加厚版</td>
+                            </tr>
+                            <tr data-ppf-id="8">
+                                <td>8</td>
+                                <td>S系列</td>
+                                <td>8mil</td>
+                                <td>10年</td>
+                                <td class="price-new">¥26,800</td>
+                                <td>高端防护 · 豪华车型</td>
+                            </tr>
+                            <tr data-ppf-id="9">
+                                <td>9</td>
+                                <td>M哑光</td>
+                                <td>8mil</td>
+                                <td>10年</td>
+                                <td class="price-new">¥29,800</td>
+                                <td>顶级哑光 · 独特质感</td>
+                            </tr>
+                            <tr data-ppf-id="10">
+                                <td>10</td>
+                                <td>Z系列</td>
+                                <td>10mil</td>
+                                <td>12年</td>
+                                <td class="price-new">¥35,800</td>
+                                <td>旗舰顶配 · 极致防护</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- 可视化图表区域 -->
+                <div style="margin-top: 60px;">
+                    <h3 style="color: var(--cyan-deep); margin-bottom: 30px; font-size: 1.8rem; text-align: center;">
+                        性能可视化对比</h3>
+
+                    <div class="grid-2" style="gap: 40px; margin-bottom: 40px;">
+                        <!-- 雷达图：前6款产品性能对比 -->
+                        <div class="quantum-glass-light" style="padding: 30px; border-radius: 20px;">
+                            <h4 style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
+                                前6款产品多维性能对比</h4>
+                            <canvas id="radarChart" width="400" height="400"></canvas>
+                        </div>
+
+                        <!-- 柱状图：竞品对比 -->
+                        <div class="quantum-glass-light" style="padding: 30px; border-radius: 20px;">
+                            <h4 style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
+                                竞品厚度与质保对比</h4>
+                            <canvas id="barChart" width="400" height="400"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 价格区间推荐 -->
+        <section class="recommendation">
+            <div class="container">
+                <div class="recommendation-banner" style="background-image: url('generated_images/18_family_car.png');">
+                    <div class="recommend-content quantum-glass">
+                        <h2 style="font-size: 2rem; margin-bottom: 20px;">💡 如何选择适合您的车衣？</h2>
+                        <p style="margin-bottom: 30px; font-size: 1.05rem; color: rgba(255,255,255,0.95);">
+                            不知道怎么选？对号入座，一秒找到适合您的最佳组合。</p>
+
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            <div
+                                style="background: rgba(255,255,255,0.12); padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.15);">
+                                <div>
+                                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 6px;">🚙 经济实用型（15万以内）
+                                    </h4>
+                                    <span style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">推荐：天穹系列、天穹Pro</span>
+                                </div>
+                                <strong style="font-size: 1.25rem; color: rgba(255,255,255,0.95);">¥3,980起</strong>
+                            </div>
+                            <div
+                                style="background: rgba(255,255,255,0.12); padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.15);">
+                                <div>
+                                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 6px;">🚗 品质均衡型（15-30万）</h4>
+                                    <span style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">推荐：L领路者、L哑光、L PLUS、T系列</span>
+                                </div>
+                                <strong style="font-size: 1.25rem; color: rgba(255,255,255,0.95);">¥7,980起</strong>
+                            </div>
+                            <div
+                                style="background: rgba(255,255,255,0.12); padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.15);">
+                                <div>
+                                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 6px;">🚕 高端防护型（30-50万）</h4>
+                                    <span style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">推荐：T PLUS、S系列</span>
+                                </div>
+                                <strong style="font-size: 1.25rem; color: rgba(255,255,255,0.95);">¥19,800起</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- /tab-ppf-pricing -->
+
+
+    <!-- ============================
+         TAB 2: 性能参数对比
+         ============================ -->
+    <div id="tab-ppf-parameters" class="tab-pane">
+
+        <!-- 车衣性能参数对比 -->
+        <section class="parameters" id="ppf-parameters">
+            <div class="container">
+                <div class="section-header">
+                    <h2>车衣性能参数对比</h2>
+                    <p>真金不怕火炼，用实打实的数据诠释顶级防护</p>
+                </div>
+
+                <div class="quantum-glass-light" style="padding: 30px;">
+                    <h3 style="color: var(--cyan-deep); margin-bottom: 20px;">全系列性能参数对比</h3>
+                    <div class="scroll-hint"><span>左右滑动查看完整参数</span><span
+                            class="hint-arrow"><span>›</span><span>›</span><span>›</span></span></div>
+                    <div class="pricing-table-container">
+                        <table class="quantum-table">
+                            <thead>
+                                <tr>
+                                    <th>产品系列</th>
+                                    <th>拉伸程度</th>
+                                    <th>断裂延展性</th>
+                                    <th>抗碎石性能</th>
+                                    <th>光泽度</th>
+                                    <th>耐化学腐蚀</th>
+                                    <th>整体防护性能</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>✨ 天穹系列</td>
+                                    <td>23MPa</td>
+                                    <td>308%</td>
+                                    <td>优异</td>
+                                    <td>90GU</td>
+                                    <td>优异</td>
+                                    <td>⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>💫 Galaxy 天穹 Pro</td>
+                                    <td>24MPa</td>
+                                    <td>318%</td>
+                                    <td>优异</td>
+                                    <td>95GU</td>
+                                    <td>优异</td>
+                                    <td>⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>🌟 L领路者</td>
+                                    <td>24MPa</td>
+                                    <td>328%</td>
+                                    <td>优异</td>
+                                    <td>99GU</td>
+                                    <td>优异</td>
+                                    <td>⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>⚡ L哑光</td>
+                                    <td>24MPa</td>
+                                    <td>328%</td>
+                                    <td>优异</td>
+                                    <td>/</td>
+                                    <td>优异</td>
+                                    <td>⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>✨ L PLUS</td>
+                                    <td>25MPa</td>
+                                    <td>358%</td>
+                                    <td>优异</td>
+                                    <td>99GU</td>
+                                    <td>优异</td>
+                                    <td>⭐⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>🔸 T系列</td>
+                                    <td>25MPa</td>
+                                    <td>360%</td>
+                                    <td>卓越</td>
+                                    <td>90GU</td>
+                                    <td>卓越</td>
+                                    <td>⭐⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>🔶 T PLUS</td>
+                                    <td>26.7MPa</td>
+                                    <td>388%</td>
+                                    <td>卓越</td>
+                                    <td>95GU</td>
+                                    <td>卓越</td>
+                                    <td>⭐⭐⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>🔷 S系列</td>
+                                    <td>36.2MPa</td>
+                                    <td>400%</td>
+                                    <td>卓越</td>
+                                    <td>90GU</td>
+                                    <td>卓越</td>
+                                    <td>⭐⭐⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr>
+                                    <td>💫 M哑光</td>
+                                    <td>26.7MPa</td>
+                                    <td>450%</td>
+                                    <td>卓越</td>
+                                    <td>29GU</td>
+                                    <td>卓越</td>
+                                    <td>⭐⭐⭐⭐⭐⭐</td>
+                                </tr>
+                                <tr style="background-color: rgba(30, 138, 154, 0.08); font-weight: 600;">
+                                    <td>💎 Z系列</td>
+                                    <td>29.7MPa</td>
+                                    <td>465%</td>
+                                    <td>卓越</td>
+                                    <td>96GU</td>
+                                    <td>卓越</td>
+                                    <td>⭐⭐⭐⭐⭐⭐</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 车衣5层结构图 -->
+                <div class="quantum-glass" style="padding: 40px; margin-top: 50px;">
+                    <h3 style="color: white; margin-bottom: 30px; text-align: center; font-size: 1.8rem;">车衣5层结构解析
+                    </h3>
+
+                    <div class="structure-diagram">
+                        <div class="structure-layer">
+                            <div class="layer-number">①</div>
+                            <div class="layer-content">
+                                <div class="layer-title">PET保护层</div>
+                                <div class="layer-desc">最外层，高强度抗刮擦，保护功能涂层</div>
+                            </div>
+                        </div>
+                        <div class="structure-layer">
+                            <div class="layer-number">②</div>
+                            <div class="layer-content">
+                                <div class="layer-title">功能涂层（自修复涂层）</div>
+                                <div class="layer-desc">自修复技术，轻微划痕加热自愈，保持漆面如新</div>
+                            </div>
+                        </div>
+                        <div class="structure-layer">
+                            <div class="layer-number">③</div>
+                            <div class="layer-content">
+                                <div class="layer-title">TPU基材（核心材料层）</div>
+                                <div class="layer-desc">聚乙内酯型脂肪族TPU，提供韧性和拉伸性能，耐黄变不发黄</div>
+                            </div>
+                        </div>
+                        <div class="structure-layer">
+                            <div class="layer-number">④</div>
+                            <div class="layer-content">
+                                <div class="layer-title">胶水层（压敏胶）</div>
+                                <div class="layer-desc">压敏胶技术，粘贴牢固且可移除不伤漆</div>
+                            </div>
+                        </div>
+                        <div class="structure-layer">
+                            <div class="layer-number">⑤</div>
+                            <div class="layer-content">
+                                <div class="layer-title">底膜</div>
+                                <div class="layer-desc">施工前保护胶面，贴膜时撕除</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 竞品对比 -->
+        <section class="comparison" id="ppf-comparison">
+            <div class="container">
+                <div class="section-header">
+                    <h2>不惧任何深度比较</h2>
+                    <p>圣戈班359年品质传承，工厂背景最强，性价比最优</p>
+                </div>
+
+                <div class="scroll-hint"><span>左右滑动查看完整参数</span><span
+                        class="hint-arrow"><span>›</span><span>›</span><span>›</span></span></div>
+                <div class="pricing-table-container quantum-glass-light" style="margin-bottom: 30px; padding: 0;">
+                    <table class="quantum-table">
+                        <thead>
+                            <tr>
+                                <th>型号</th>
+                                <th>品牌类别</th>
+                                <th>厚度</th>
+                                <th>质保年限</th>
+                                <th>工厂背景</th>
+                                <th>统一报价</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: rgba(30, 138, 154, 0.1); font-weight: bold;">
+                                <td>💎 量子膜 L-PLUS</td>
+                                <td>主品牌</td>
+                                <td>8.5mil</td>
+                                <td>7年</td>
+                                <td>圣戈班（1665年，504亿欧元）</td>
+                                <td>¥9,980</td>
+                            </tr>
+                            <tr style="background-color: rgba(30, 138, 154, 0.06); font-weight: 600;">
+                                <td>🔷 量子膜 L</td>
+                                <td>主品牌</td>
+                                <td>8mil</td>
+                                <td>6年</td>
+                                <td>圣戈班</td>
+                                <td>¥7,980</td>
+                            </tr>
+                            <tr style="background-color: rgba(30, 138, 154, 0.04);">
+                                <td>✨ 天穹PRO</td>
+                                <td>子品牌</td>
+                                <td>7.8mil</td>
+                                <td>5年</td>
+                                <td>圣戈班</td>
+                                <td>¥4,980</td>
+                            </tr>
+                            <tr style="background-color: rgba(30, 138, 154, 0.04);">
+                                <td>💫 天穹系列</td>
+                                <td>子品牌</td>
+                                <td>7.5mil</td>
+                                <td>5年</td>
+                                <td>圣戈班</td>
+                                <td>¥3,980</td>
+                            </tr>
+                            <tr>
+                                <td>3M 高光50</td>
+                                <td>3M</td>
+                                <td>7.7mil</td>
+                                <td>5年</td>
+                                <td>3M（1902年，246亿美元）</td>
+                                <td>¥8,800</td>
+                            </tr>
+                            <tr>
+                                <td>3M 高光精英版</td>
+                                <td>3M</td>
+                                <td>7mil</td>
+                                <td>5年</td>
+                                <td>3M</td>
+                                <td>¥6,980</td>
+                            </tr>
+                            <tr>
+                                <td>威固 V3</td>
+                                <td>主品牌</td>
+                                <td>7.5mil</td>
+                                <td>5年</td>
+                                <td>伊士曼（1920年，93.82亿美元）</td>
+                                <td>¥8,800</td>
+                            </tr>
+                            <tr>
+                                <td>星际威</td>
+                                <td>子品牌</td>
+                                <td>7.45mil</td>
+                                <td>5年</td>
+                                <td>伊士曼</td>
+                                <td>¥6,980</td>
+                            </tr>
+                            <tr>
+                                <td>龙膜 G0</td>
+                                <td>主品牌</td>
+                                <td>7.5mil</td>
+                                <td>5年</td>
+                                <td>伊士曼</td>
+                                <td>¥8,800</td>
+                            </tr>
+                            <tr>
+                                <td>龙小侠</td>
+                                <td>子品牌</td>
+                                <td>7mil</td>
+                                <td>5年</td>
+                                <td>伊士曼</td>
+                                <td>¥5,980</td>
+                            </tr>
+                            <tr>
+                                <td>XPEL PROTEX</td>
+                                <td>子品牌</td>
+                                <td>7.5mil</td>
+                                <td>5年</td>
+                                <td>XPEL（1997年，4.2亿美元）</td>
+                                <td>¥6,880</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="advantage-list">
+                    <div class="advantage-item">
+                        <span style="font-size: 1.5rem;">🏆</span>
+                        <div>
+                            <strong>工厂背景最强：圣戈班359年历史</strong>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">
+                                成立于1665年，营收规模504亿欧元，远超竞品，世界500强企业，国王路易十四钦定供应商。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <span style="font-size: 1.5rem;">💰</span>
+                        <div>
+                            <strong>价格更具性价比：同等级产品价格更优</strong>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">
+                                L-PLUS 8.5mil厚度，7年质保，仅¥9,980，同等配置竞品普遍¥10,000以上。</p>
+                        </div>
+                    </div>
+                    <div class="advantage-item">
+                        <span style="font-size: 1.5rem;">⏰</span>
+                        <div>
+                            <strong>质保时间更长：最高12年质保</strong>
+                            <p style="font-size: 0.9rem; margin-top: 5px;">
+                                L-PLUS提供7年质保，Z系列提供12年质保，优于大多数竞品的5年质保。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- /tab-ppf-parameters -->
+
+
+    <!-- ============================
+         TAB 3: 品牌介绍
+         ============================ -->
+    <div id="tab-ppf-intro" class="tab-pane">
+
+        <!-- Hero 首屏 -->
+        <header class="hero">
+            <div class="container">
+                <div class="hero-content quantum-glass-light" style="padding: 40px; border-radius: 20px;">
+                    <!-- 圣戈班 Logo + 股票代码 -->
+                    <div class="sgo-badge">
+                        <img src="generated_images/saint_gobain_logo.png" alt="Saint-Gobain 圣戈班" class="sgo-logo">
+                        <div class="sgo-stock">
+                            <span class="stock-label">上市公司</span>
+                            <span class="stock-exchange">Euronext Paris</span>
+                            <span class="stock-ticker">SGO</span>
+                            <span class="stock-index">CAC 40</span>
+                        </div>
+                    </div>
+                    <h1>量子膜 · 圣戈班 隐形车衣（PPF）</h1>
+                    <h2>广州花都唯一运营中心 · CHCC 广州壕马</h2>
+                    <p>法国圣戈班旗下 · 359年品质传承 · 守护爱车原厂漆面 · 历久弥新</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary js-switch-tab" data-target="tab-ppf-pricing">查看套餐价格</a>
+                        <a href="#" class="btn btn-primary js-switch-tab" data-target="tab-ppf-parameters"
+                            style="background: transparent; border: 2px solid var(--cyan-deep); color: var(--cyan-deep);">查看性能参数</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 品牌信任背书 -->
+        <section class="trust-cards-section" id="ppf-trust">
+            <div class="container">
+                <div class="grid-4 trust-cards">
+                    <div class="quantum-glass trust-card interactive-card">
+                        <img src="generated_images/02_saint_gobain_badge.png" alt="法国圣戈班">
+                        <h3>法国圣戈班</h3>
+                        <p>1665年成立，世界500强，国王路易十四钦定供应商</p>
+                    </div>
+                    <div class="quantum-glass trust-card interactive-card">
+                        <img src="generated_images/03_10_layer_tech.png" style="border-radius: 10px;" alt="自有工厂直营">
+                        <h3>自有工厂直营</h3>
+                        <p>量子膜是圣戈班旗下唯一直营品牌，非代工，品质直接把控</p>
+                    </div>
+                    <div class="quantum-glass trust-card interactive-card">
+                        <img src="generated_images/13_warranty_card.png" alt="长效质保承诺">
+                        <h3>长效质保承诺</h3>
+                        <p>最高12年质保（Z系列），覆盖起泡、开胶、断裂、聚胶、耐黄变</p>
+                    </div>
+                    <div class="quantum-glass trust-card interactive-card">
+                        <img src="generated_images/store_front.png" style="border-radius: 10px;" alt="花都唯一运营中心">
+                        <h3>花都唯一运营中心</h3>
+                        <p>官方授权，正品溯源，专业技师团队</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 核心卖点 -->
+        <section class="features" id="ppf-features">
+            <div class="container">
+                <div class="section-header">
+                    <h2>守护爱车原厂漆面</h2>
+                    <p>探索量子膜隐形车衣带来的全方位防护体验</p>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="flex: 1;">
+                        <img src="generated_images/02_saint_gobain_badge.png" alt="圣戈班原厂TPU基材">
+                    </div>
+                    <div class="feature-content" style="flex: 1;">
+                        <h3>01 / 圣戈班原厂TPU基材</h3>
+                        <p>采用圣戈班自产的聚乙内酯型脂肪族TPU材料，耐黄变性能远超普通TPU，10年如新不发黄。通过SGS、REACH等国际权威认证，品质有保障。</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="flex: 1;">
+                        <img src="generated_images/07_safety_thickness.png" alt="超强韧性">
+                    </div>
+                    <div class="feature-content" style="flex: 1;">
+                        <h3>02 / 超强韧性，3-4倍拉伸</h3>
+                        <p>断裂延展性高达308%-465%，抵御碎石冲击、轻微碰撞，保护原厂漆面。抗穿刺强度远超行业平均水平，为您的爱车提供真正的安全屏障。</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="flex: 1;">
+                        <img src="generated_images/12_quality_check.png" alt="自修复涂层技术">
+                    </div>
+                    <div class="feature-content" style="flex: 1;">
+                        <h3>03 / 自修复涂层技术</h3>
+                        <p>轻微划痕遇热自动修复（阳光暴晒或热水浇淋），Quadruple S修复涂层（T系列以上），减少日常洗车、路面摩擦造成的细纹，持久如新。</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="flex: 1;">
+                        <img src="generated_images/15_diamond_series.png" alt="高光泽度">
+                    </div>
+                    <div class="feature-content" style="flex: 1;">
+                        <h3>04 / 高光泽度，隐形增亮</h3>
+                        <p>光泽度高达90-99 GU（哑光系列除外），贴膜后如同新车，提升漆面质感。透明无色，完美保留原厂车漆颜色，让您的爱车焕发新生。</p>
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-image" style="flex: 1;">
+                        <img src="generated_images/13_warranty_card.png" alt="可移除不伤漆">
+                    </div>
+                    <div class="feature-content" style="flex: 1;">
+                        <h3>05 / 可移除不伤漆</h3>
+                        <p>采用压敏胶技术，粘贴牢固但可完整撕除，不残留胶印，不损伤原厂漆面。二手车置换时可轻松还原，保护爱车保值增值。</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div><!-- /tab-ppf-intro -->
+
+
+    <!-- ============================
+         TAB 4: 施工售后
+         ============================ -->
+    <div id="tab-ppf-service" class="tab-pane">
+
+        <!-- 施工流程 -->
+        <section class="process" id="ppf-process">
+            <div class="container">
+                <div class="section-header">
+                    <h2>专业施工流程</h2>
+                    <p>CHCC 广州壕马 · 量子膜官方认证的标准施工服务，确保完美贴合与最佳性能</p>
+                </div>
+
+                <div class="process-grid">
+                    <div class="process-card">
+                        <img src="generated_images/store_front.png" alt="到店验车" class="process-img">
+                        <div class="process-content quantum-glass-light"
+                            style="box-shadow: none; border-radius: 0 0 20px 20px;">
+                            <span class="process-number">01</span>
+                            <h3>到店验车 · 需求沟通</h3>
+                            <p>专业顾问了解车型、车况、预算，检查车辆外观，确认需要贴膜的部位，推荐最适合的车衣型号和套餐。</p>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <img src="generated_images/09_inspection.png" alt="车辆清洗" class="process-img">
+                        <div class="process-content quantum-glass-light"
+                            style="box-shadow: none; border-radius: 0 0 20px 20px;">
+                            <span class="process-number">02</span>
+                            <h3>车辆清洗 · 深度打磨</h3>
+                            <p>全车精洗，去除油膜、沥青、虫胶等顽固污渍。使用专业抛光机打磨漆面，去除氧化层，确保漆面光滑平整。</p>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <img src="generated_images/11_installation.png" alt="电脑裁膜" class="process-img">
+                        <div class="process-content quantum-glass-light"
+                            style="box-shadow: none; border-radius: 0 0 20px 20px;">
+                            <span class="process-number">03</span>
+                            <h3>电脑裁膜 · 精准切割</h3>
+                            <p>输入车型数据，电脑智能裁切，避免手工裁膜可能造成的玻璃划伤。预留合理余量，确保完美包边。</p>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <img src="generated_images/10_clean_workshop.png" alt="无尘施工" class="process-img">
+                        <div class="process-content quantum-glass-light"
+                            style="box-shadow: none; border-radius: 0 0 20px 20px;">
+                            <span class="process-number">04</span>
+                            <h3>无尘车间 · 水贴法施工</h3>
+                            <p>车辆驶入无尘施工间，开启降尘设备。使用18道防护保护车辆，采用微水贴膜技术，避免干贴产生气泡。</p>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <img src="generated_images/11_installation.png" alt="烤枪定型" class="process-img">
+                        <div class="process-content quantum-glass-light"
+                            style="box-shadow: none; border-radius: 0 0 20px 20px;">
+                            <span class="process-number">05</span>
+                            <h3>烤枪定型 · 细节处理</h3>
+                            <p>使用专业烤枪加热定型，使膜与车身完美贴合。处理边缘、弧度、包边等细节部位，排出气泡和水分。</p>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <img src="generated_images/12_quality_check.png" alt="质检验收" class="process-img">
+                        <div class="process-content quantum-glass-light"
+                            style="box-shadow: none; border-radius: 0 0 20px 20px;">
+                            <span class="process-number">06</span>
+                            <h3>质检验收 · 多角度检查</h3>
+                            <p>在特定灯光及自然光下进行全面检查，重点排查边缘是否翘起、是否有气泡、是否有颗粒，确保施工品质完美无瑕。</p>
+                        </div>
+                    </div>
+                    <div class="process-card">
+                        <img src="generated_images/13_warranty_card.png" alt="质保登记" class="process-img">
+                        <div class="process-content quantum-glass-light"
+                            style="box-shadow: none; border-radius: 0 0 20px 20px;">
+                            <span class="process-number">07</span>
+                            <h3>质保登记 · 开具凭证</h3>
+                            <p>录入官方电子质保系统，开具正规发票与质保凭证卡片。告知客户养护注意事项，质保从施工完成之日起生效。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题 FAQ -->
+        <section class="faq" id="ppf-faq">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常见问题 FAQ</h2>
+                    <p>消除您的疑虑，明明白白选好膜</p>
+                </div>
+
+                <div class="faq-grid quantum-glass" style="padding: 40px;">
+                    <div class="faq-item">
+                        <h3><span class="faq-icon">Q：</span>隐形车衣和隔热膜有什么区别？</h3>
+                        <p>隐形车衣（PPF）贴在车身外漆面,主要功能是保护原厂漆面免受划痕、碎石、酸雨等伤害；隔热膜贴在车窗玻璃内侧,主要功能是隔热、防晒、防紫外线。两者作用完全不同,互不替代。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="faq-icon">Q：</span>为什么需要贴隐形车衣？</h3>
+                        <p>①保护原厂漆面：新车漆面娇贵,碎石、树枝、钥匙划痕等都会损伤漆面。②保值增值：二手车置换时,完好的原厂漆面可提升车辆估值。③降低养护成本：避免频繁补漆、抛光,长期更省钱。④持久如新：贴膜后车辆外观历久弥新。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="faq-icon">Q：</span>车衣质保具体"保"什么？</h3>
+                        <p>覆盖因膜质量问题引发的：✅起泡脱层 ✅开胶脱落 ✅自发断裂 ✅胶水聚集成团 ✅发黄变色。不包括：人为破坏、事故撞击、化学腐蚀剂直接接触等非正常使用情况。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="faq-icon">Q：</span>全车贴车衣需要多长时间？</h3>
+                        <p>全车贴膜：3-5天（包含清洗、打磨、裁膜、施工、养护时间）。局部贴膜（如前机盖+前杠）：1-2天。施工后养护：3天内不洗车,7天内避免高压水枪直冲边缘。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="faq-icon">Q：</span>车衣贴完后如何保养？</h3>
+                        <p>前7天：避免洗车,让胶水充分固化。日常洗车：建议手工洗车或无接触洗车,避免刷子刮擦。定期护理：每3个月使用专用车衣护理液擦拭,保持光泽。避免接触：强酸强碱清洁剂、粗糙毛巾、尖锐物体。</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><span class="faq-icon">Q：</span>为什么要选择官方授权施工中心？</h3>
+                        <p>①技师认证：CHCC广州壕马技师均通过量子膜官方认证培训。②无尘车间：专业无尘施工环境,避免灰尘颗粒。③正品保障：官方授权渠道,杜绝假冒伪劣产品。④质保有效：只有在官方授权中心施工,质保才真正有效。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div><!-- /tab-ppf-service -->
+
+
+    <footer>
+        <div class="container">
+            <h2 style="color: var(--cyan-light); margin-bottom: 10px;">圣戈班 · 量子膜 隐形车衣（PPF）</h2>
+            <p style="margin-bottom: 30px;">CHCC 广州壕马 - 花都唯一官方运营中心</p>
+            <p>选品牌看历史，贴膜就选量子膜！359年品质传承，源自法国的正宗科技。</p>
+            <p style="font-size: 0.8rem; margin-top: 40px; opacity: 0.5;">© 2026 CHCC Guangzhou Haoma. All Rights
+                Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Tab 切换逻辑 -->
+    <script>
+        var tabBtns = document.querySelectorAll('.tab-btn');
+        var tabPanes = document.querySelectorAll('.tab-pane');
+        var jsSwitchBtns = document.querySelectorAll('.js-switch-tab');
+
+        function switchTab(targetId) {
+            tabBtns.forEach(function (btn) { btn.classList.remove('active'); });
+            tabPanes.forEach(function (pane) { pane.classList.remove('active'); });
+
+            var targetBtn = document.querySelector('.tab-btn[data-target="' + targetId + '"]');
+            var targetPane = document.getElementById(targetId);
+
+            if (targetBtn) targetBtn.classList.add('active');
+            if (targetPane) targetPane.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        tabBtns.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                switchTab(btn.getAttribute('data-target'));
+            });
+        });
+
+        jsSwitchBtns.forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault();
+                switchTab(btn.getAttribute('data-target'));
+            });
+        });
+    </script>
+
+    <!-- ===== 车衣产品参数弹窗 ===== -->
+    <div class="ppf-modal-overlay" id="ppfModalOverlay" role="dialog" aria-modal="true" aria-labelledby="ppfModalTitle">
+        <div class="ppf-modal" id="ppfModal">
+            <button class="ppf-modal-close" id="ppfModalClose" aria-label="关闭">✕</button>
+            <div id="ppfModalContent"></div>
+        </div>
+    </div>
+
+    <script>
+        // ===== 车衣产品数据库 =====
+        var PPF_DB = {
+            1: {
+                name: '天穹系列',
+                series: '经济入门系列',
+                price: '¥3,980',
+                thickness: '7.5mil',
+                warranty: '5年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '23MPa',
+                elongation: '308%',
+                stoneResist: '优异',
+                gloss: '90GU',
+                chemicalResist: '优异',
+                features: [
+                    '采用圣戈班聚乙内酯型脂肪族TPU基材，耐黄变性能优异',
+                    '压敏胶技术，粘贴牢固且可移除不伤漆',
+                    '适合日常通勤，经济实惠的入门选择',
+                    '通过SGS、REACH等国际权威认证'
+                ]
+            },
+            2: {
+                name: 'Galaxy 天穹 Pro',
+                series: '高性价比系列',
+                price: '¥4,980',
+                thickness: '7.8mil',
+                warranty: '5年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '24MPa',
+                elongation: '318%',
+                stoneResist: '优异',
+                gloss: '95GU',
+                chemicalResist: '优异',
+                features: [
+                    '相比天穹系列厚度提升至7.8mil，防护性能更优',
+                    '光泽度高达95GU，贴膜后如同新车',
+                    '断裂延展性318%，抵御碎石冲击',
+                    '家用车首选，性价比之王'
+                ]
+            },
+            3: {
+                name: 'L领路者',
+                series: '品质之选系列',
+                price: '¥7,980',
+                thickness: '8mil',
+                warranty: '6年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '24MPa',
+                elongation: '328%',
+                stoneResist: '优异',
+                gloss: '99GU',
+                chemicalResist: '优异',
+                features: [
+                    '厚度达8mil，防护性能进一步提升',
+                    '质保时间延长至6年，安心长久',
+                    '光泽度高达99GU，极致透亮',
+                    '断裂延展性328%，韧性更强'
+                ]
+            },
+            4: {
+                name: 'L哑光',
+                series: '时尚个性系列',
+                price: '¥8,980',
+                thickness: '8mil',
+                warranty: '5年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '24MPa',
+                elongation: '328%',
+                stoneResist: '优异',
+                gloss: '哑光质感',
+                chemicalResist: '优异',
+                features: [
+                    '独特哑光质感，低调奢华，个性十足',
+                    '厚度8mil，防护性能与L领路者同级',
+                    '适合追求个性化外观的车主',
+                    '哑光膜需要专业技师施工，我们技术有保障'
+                ]
+            },
+            5: {
+                name: 'L PLUS',
+                series: '超值耐用系列',
+                price: '¥9,980',
+                thickness: '8.5mil',
+                warranty: '7年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '25MPa',
+                elongation: '358%',
+                stoneResist: '优异',
+                gloss: '99GU',
+                chemicalResist: '优异',
+                features: [
+                    '厚度提升至8.5mil，防护性能更强',
+                    '质保时间延长至7年，优于竞品',
+                    '断裂延展性高达358%，超强韧性',
+                    '光泽度99GU，极致透亮，性价比之选'
+                ]
+            },
+            6: {
+                name: 'T系列',
+                series: '标准防护系列',
+                price: '¥16,800',
+                thickness: '8mil',
+                warranty: '7年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '25MPa',
+                elongation: '360%',
+                stoneResist: '卓越',
+                gloss: '90GU',
+                chemicalResist: '卓越',
+                features: [
+                    '配备Quadruple S自修复涂层，轻微划痕遇热自愈',
+                    '断裂延展性360%，抗碎石性能卓越',
+                    '适合中端车型，标准防护配置',
+                    '质保7年，长效安心'
+                ]
+            },
+            7: {
+                name: 'T PLUS',
+                series: '升级防护系列',
+                price: '¥19,800',
+                thickness: '8.5mil',
+                warranty: '7年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '26.7MPa',
+                elongation: '388%',
+                stoneResist: '卓越',
+                gloss: '95GU',
+                chemicalResist: '卓越',
+                features: [
+                    '厚度提升至8.5mil，防护性能进一步增强',
+                    '断裂延展性高达388%，超强韧性',
+                    'Quadruple S自修复涂层，持久如新',
+                    '光泽度95GU，贴膜后焕然一新'
+                ]
+            },
+            8: {
+                name: 'S系列',
+                series: '高端防护系列',
+                price: '¥26,800',
+                thickness: '8mil',
+                warranty: '10年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '36.2MPa',
+                elongation: '400%',
+                stoneResist: '卓越',
+                gloss: '90GU',
+                chemicalResist: '卓越',
+                features: [
+                    '拉伸程度高达36.2MPa，业界顶级',
+                    '质保时间延长至10年，长效安心',
+                    '断裂延展性400%，极致韧性',
+                    '适合豪华车型，高端防护配置'
+                ]
+            },
+            9: {
+                name: 'M哑光',
+                series: '顶级哑光系列',
+                price: '¥29,800',
+                thickness: '8mil',
+                warranty: '10年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '26.7MPa',
+                elongation: '450%',
+                stoneResist: '卓越',
+                gloss: '29GU（哑光）',
+                chemicalResist: '卓越',
+                features: [
+                    '顶级哑光质感，独特低调奢华',
+                    '断裂延展性高达450%，超强韧性',
+                    '质保10年，长效安心',
+                    '适合追求极致个性的豪华车主'
+                ]
+            },
+            10: {
+                name: 'Z系列',
+                series: '旗舰顶配系列',
+                price: '¥35,800',
+                thickness: '10mil',
+                warranty: '12年',
+                warrantyItems: '起泡、开胶、断裂、聚胶、耐黄变',
+                tensile: '29.7MPa',
+                elongation: '465%',
+                stoneResist: '卓越',
+                gloss: '96GU',
+                chemicalResist: '卓越',
+                features: [
+                    '厚度高达10mil，行业顶配，极致防护',
+                    '断裂延展性465%，超强韧性，抵御一切冲击',
+                    '质保时间12年，行业最长',
+                    '适合顶级豪华车型，追求极致防护的车主'
+                ]
+            }
+        };
+
+        // ===== 弹窗逻辑 =====
+        var overlay = document.getElementById('ppfModalOverlay');
+        var modalClose = document.getElementById('ppfModalClose');
+        var modalContent = document.getElementById('ppfModalContent');
+
+        function openPpfModal(ppfId) {
+            var ppf = PPF_DB[ppfId];
+            if (!ppf) return;
+
+            var html = '';
+            html += '<div class="ppf-modal-header">';
+            html += '<p class="ppf-modal-series">' + ppf.series + '</p>';
+            html += '<h2 class="ppf-modal-title">' + ppf.name + '</h2>';
+            html += '<p class="ppf-modal-subtitle">官方指导价：<strong>' + ppf.price + '</strong></p>';
+            html += '</div>';
+
+            html += '<div class="ppf-modal-section">';
+            html += '<h3 class="ppf-modal-section-title">性能参数</h3>';
+            html += '<div class="ppf-params-grid">';
+            html += '<div class="ppf-param"><div class="ppf-param-label">厚度</div><div class="ppf-param-value">' + ppf.thickness + '</div></div>';
+            html += '<div class="ppf-param"><div class="ppf-param-label">拉伸程度</div><div class="ppf-param-value">' + ppf.tensile + '</div></div>';
+            html += '<div class="ppf-param"><div class="ppf-param-label">断裂延展性</div><div class="ppf-param-value">' + ppf.elongation + '</div></div>';
+            html += '<div class="ppf-param"><div class="ppf-param-label">抗碎石性能</div><div class="ppf-param-value">' + ppf.stoneResist + '</div></div>';
+            html += '<div class="ppf-param"><div class="ppf-param-label">光泽度</div><div class="ppf-param-value">' + ppf.gloss + '</div></div>';
+            html += '<div class="ppf-param"><div class="ppf-param-label">耐化学腐蚀</div><div class="ppf-param-value">' + ppf.chemicalResist + '</div></div>';
+            html += '</div>';
+            html += '</div>';
+
+            html += '<div class="ppf-modal-section">';
+            html += '<h3 class="ppf-modal-section-title">核心卖点</h3>';
+            html += '<div class="ppf-features-list">';
+            ppf.features.forEach(function (feature) {
+                html += '<div class="ppf-feature-item">' + feature + '</div>';
+            });
+            html += '</div>';
+            html += '</div>';
+
+            html += '<div class="ppf-warranty-box">';
+            html += '<strong>🛡️ 质保：</strong>';
+            html += '<span>' + ppf.warranty + ' 质保（' + ppf.warrantyItems + '）</span>';
+            html += '</div>';
+
+            modalContent.innerHTML = html;
+            overlay.classList.add('visible');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closePpfModal() {
+            overlay.classList.remove('visible');
+            document.body.style.overflow = '';
+        }
+
+        modalClose.addEventListener('click', closePpfModal);
+        overlay.addEventListener('click', function (e) {
+            if (!e.target.closest('.ppf-modal')) closePpfModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closePpfModal();
+        });
+
+        // 为价格表行绑定点击事件
+        var pricingPane = document.getElementById('tab-ppf-pricing');
+        var ppfRows = pricingPane ? pricingPane.querySelectorAll('tbody tr') : [];
+        ppfRows.forEach(function (tr) {
+            var ppfId = parseInt(tr.getAttribute('data-ppf-id'));
+            tr.setAttribute('title', '点击查看详细参数');
+            tr.addEventListener('click', function () {
+                openPpfModal(ppfId);
+            });
+        });
+
+        // ===== 图表绘制 =====
+        window.addEventListener('DOMContentLoaded', function () {
+            // 雷达图：前6款产品多维性能对比（优化数值比例，让图表更饱满）
+            var radarCtx = document.getElementById('radarChart');
+            if (radarCtx) {
+                var radarChart = new Chart(radarCtx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['拉伸强度', '延展性', '抗碎石', '光泽度', '耐化学'],
+                        datasets: [
+                            {
+                                label: '天穹系列',
+                                data: [69, 62, 75, 90, 75],
+                                backgroundColor: 'rgba(128, 229, 240, 0.2)',
+                                borderColor: 'rgba(128, 229, 240, 0.8)',
+                                borderWidth: 2,
+                                pointBackgroundColor: 'rgba(128, 229, 240, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(128, 229, 240, 1)'
+                            },
+                            {
+                                label: '天穹Pro',
+                                data: [72, 64, 78, 95, 78],
+                                backgroundColor: 'rgba(94, 234, 212, 0.2)',
+                                borderColor: 'rgba(94, 234, 212, 0.8)',
+                                borderWidth: 2,
+                                pointBackgroundColor: 'rgba(94, 234, 212, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(94, 234, 212, 1)'
+                            },
+                            {
+                                label: 'L领路者',
+                                data: [72, 66, 80, 99, 80],
+                                backgroundColor: 'rgba(30, 138, 154, 0.2)',
+                                borderColor: 'rgba(30, 138, 154, 0.8)',
+                                borderWidth: 2,
+                                pointBackgroundColor: 'rgba(30, 138, 154, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(30, 138, 154, 1)'
+                            },
+                            {
+                                label: 'L PLUS',
+                                data: [75, 72, 82, 99, 82],
+                                backgroundColor: 'rgba(52, 211, 153, 0.2)',
+                                borderColor: 'rgba(52, 211, 153, 0.8)',
+                                borderWidth: 2,
+                                pointBackgroundColor: 'rgba(52, 211, 153, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(52, 211, 153, 1)'
+                            },
+                            {
+                                label: 'T系列',
+                                data: [75, 72, 88, 90, 88],
+                                backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                                borderColor: 'rgba(59, 130, 246, 0.8)',
+                                borderWidth: 2,
+                                pointBackgroundColor: 'rgba(59, 130, 246, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(59, 130, 246, 1)'
+                            },
+                            {
+                                label: 'T PLUS',
+                                data: [80, 78, 92, 95, 92],
+                                backgroundColor: 'rgba(99, 102, 241, 0.2)',
+                                borderColor: 'rgba(99, 102, 241, 0.8)',
+                                borderWidth: 2,
+                                pointBackgroundColor: 'rgba(99, 102, 241, 1)',
+                                pointBorderColor: '#fff',
+                                pointHoverBackgroundColor: '#fff',
+                                pointHoverBorderColor: 'rgba(99, 102, 241, 1)'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 10,
+                                    font: {
+                                        size: 11
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        var label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        label += context.parsed.r;
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            r: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    stepSize: 20,
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                pointLabels: {
+                                    font: {
+                                        size: 11
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 柱状图：竞品对比（增加性价比维度）
+            var barCtx = document.getElementById('barChart');
+            if (barCtx) {
+                var barChart = new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['L PLUS\n¥9,980', 'L领路者\n¥7,980', '天穹Pro\n¥4,980', '天穹系列\n¥3,980', '3M高光50\n¥8,800', '3M精英版\n¥6,980', '威固V3\n¥8,800', '星际威\n¥6,980', '龙膜G0\n¥8,800', '龙小侠\n¥5,980', 'XPEL\nPROTEX\n¥6,880'],
+                        datasets: [
+                            {
+                                label: '厚度 (mil)',
+                                data: [8.5, 8, 7.8, 7.5, 7.7, 7, 7.5, 7.45, 7.5, 7, 7.5],
+                                backgroundColor: 'rgba(30, 138, 154, 0.7)',
+                                borderColor: 'rgba(30, 138, 154, 1)',
+                                borderWidth: 1,
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: '质保 (年)',
+                                data: [7, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+                                backgroundColor: 'rgba(94, 234, 212, 0.7)',
+                                borderColor: 'rgba(94, 234, 212, 1)',
+                                borderWidth: 1,
+                                yAxisID: 'y1'
+                            },
+                            {
+                                label: '性价比值 ⭐',
+                                data: [59.6, 60.2, 78.3, 94.2, 43.8, 50.1, 42.6, 53.4, 42.6, 58.5, 54.5],
+                                backgroundColor: 'rgba(251, 191, 36, 0.7)',
+                                borderColor: 'rgba(251, 191, 36, 1)',
+                                borderWidth: 1,
+                                yAxisID: 'y'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        interaction: {
+                            mode: 'index',
+                            intersect: false
+                        },
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    boxWidth: 12,
+                                    padding: 12,
+                                    font: {
+                                        size: 11
+                                    }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        var label = context.dataset.label || '';
+                                        if (label) {
+                                            label += ': ';
+                                        }
+                                        var value = context.parsed.y;
+                                        if (context.datasetIndex === 2) {
+                                            // 性价比值显示实际值（除以10）
+                                            label += (value / 10).toFixed(2);
+                                        } else {
+                                            label += value;
+                                        }
+                                        return label;
+                                    },
+                                    afterLabel: function(context) {
+                                        if (context.datasetIndex === 2) {
+                                            return '(厚度×质保/千元价)×10';
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                ticks: {
+                                    font: {
+                                        size: 9
+                                    },
+                                    maxRotation: 0,
+                                    minRotation: 0
+                                }
+                            },
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                title: {
+                                    display: true,
+                                    text: '厚度 (mil) / 性价比值×10',
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 9
+                                    }
+                                },
+                                beginAtZero: true,
+                                max: 100
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                title: {
+                                    display: true,
+                                    text: '质保 (年)',
+                                    font: {
+                                        size: 10
+                                    }
+                                },
+                                ticks: {
+                                    font: {
+                                        size: 9
+                                    }
+                                },
+                                grid: {
+                                    drawOnChartArea: false
+                                },
+                                beginAtZero: true,
+                                max: 10
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
