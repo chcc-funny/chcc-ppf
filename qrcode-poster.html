@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>量子膜PPF车衣 - 扫码查看详情</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+                         'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .poster-container {
+            background: linear-gradient(180deg, #5FC8D8 0%, #4EAEB8 100%);
+            border-radius: 40px;
+            padding: 60px 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .title {
+            color: white;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 20px;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .qrcode-wrapper {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .qrcode-inner {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .qrcode-img {
+            width: 240px;
+            height: 240px;
+            display: block;
+        }
+
+        .scan-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .scan-title {
+            color: white;
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .scan-description {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.25);
+            padding: 15px 20px;
+            border-radius: 15px;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(255, 255, 255, 0.35);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            margin-right: 8px;
+        }
+
+        .divider {
+            height: 2px;
+            background: rgba(255, 255, 255, 0.3);
+            margin: 35px 0;
+            border-radius: 1px;
+        }
+
+        .footer {
+            color: white;
+            margin-top: 30px;
+        }
+
+        .company-name {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .company-slogan {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 1px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .poster-container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .poster-container {
+                padding: 40px 30px;
+            }
+
+            .title {
+                font-size: 32px;
+                letter-spacing: 4px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .qrcode-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .features-grid {
+                gap: 10px;
+            }
+
+            .feature-item {
+                font-size: 14px;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster-container">
+        <h1 class="title">量子膜PPF车衣</h1>
+        <p class="subtitle">详细介绍及对比</p>
+
+        <div class="qrcode-wrapper">
+            <div class="qrcode-inner">
+                <img
+                    src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://ppf.aicarengine.com/"
+                    alt="扫码查看详情"
+                    class="qrcode-img"
+                />
+            </div>
+        </div>
+
+        <div class="scan-icon">📱</div>
+        <h2 class="scan-title">扫码查看详情</h2>
+
+        <p class="scan-description">扫描上方二维码</p>
+        <p class="scan-description">了解量子膜全系列产品</p>
+        <p class="scan-description">查看详细参数对比</p>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-icon">🔥</span>
+                高效隔热
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🛡️</span>
+                防爆防护
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">☀️</span>
+                防紫外线
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💎</span>
+                高清透光
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="footer">
+            <div class="company-name">CHCC 广州花都量子膜中心</div>
+            <div class="company-slogan">专业汽车隔热膜 · 品质保证</div>
+        </div>
+    </div>
+</body>
+</html>

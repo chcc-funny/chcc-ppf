@@ -1660,8 +1660,8 @@
                         labels: labels,
                         datasets: [
                             {
-                                label: '厚度 (mil)',
-                                data: [8.5, 8, 7.8, 7.5, 7.7, 7, 7.5, 7.45, 7.5, 7, 7.5],
+                                label: '厚度×10 (mil)',
+                                data: [85, 80, 78, 75, 77, 70, 75, 74.5, 75, 70, 75],
                                 backgroundColor: 'rgba(30, 138, 154, 0.7)',
                                 borderColor: 'rgba(30, 138, 154, 1)',
                                 borderWidth: 1,
@@ -1677,7 +1677,7 @@
                             },
                             {
                                 label: '性价比值 ⭐',
-                                data: [59.6, 60.2, 78.3, 94.2, 43.8, 50.1, 42.6, 53.4, 42.6, 58.5, 54.5],
+                                data: [59.6, 96, 88, 82, 43.8, 50.1, 42.6, 53.4, 42.6, 58.5, 54.5],
                                 backgroundColor: 'rgba(251, 191, 36, 0.7)',
                                 borderColor: 'rgba(251, 191, 36, 1)',
                                 borderWidth: 1,
@@ -1715,7 +1715,11 @@
                                             label += ': ';
                                         }
                                         var value = context.parsed.y;
-                                        if (context.datasetIndex === 2) {
+                                        if (context.datasetIndex === 0) {
+                                            // 厚度显示实际值（除以10）
+                                            label = '厚度: ' + (value / 10).toFixed(2) + ' mil';
+                                            return label;
+                                        } else if (context.datasetIndex === 2) {
                                             // 性价比值显示实际值（除以10）
                                             label += (value / 10).toFixed(2);
                                         } else {
@@ -1737,8 +1741,8 @@
                                     font: {
                                         size: window.innerWidth < 768 ? 8 : 9
                                     },
-                                    maxRotation: window.innerWidth < 768 ? 45 : 0,
-                                    minRotation: window.innerWidth < 768 ? 45 : 0,
+                                    maxRotation: 45,
+                                    minRotation: 45,
                                     autoSkip: false
                                 }
                             },
@@ -1748,7 +1752,7 @@
                                 position: 'left',
                                 title: {
                                     display: window.innerWidth >= 768,
-                                    text: '厚度 (mil) / 性价比值×10',
+                                    text: '厚度×10 (mil) / 性价比值×10',
                                     font: {
                                         size: window.innerWidth < 768 ? 8 : 10
                                     }

@@ -1134,3 +1134,256 @@ footer {
     padding: 20px;
   }
 }
+
+/* ===== 移动端紧凑化优化 ===== */
+@media (max-width: 768px) {
+  /* 1. 全局间距优化 */
+  section {
+    padding: 30px 0 !important;
+  }
+
+  .section-header {
+    margin-bottom: 25px !important;
+  }
+
+  .section-header h2 {
+    font-size: 1.6rem !important;
+  }
+
+  .section-header p {
+    font-size: 0.9rem !important;
+  }
+
+  /* 2. 套餐表格压缩 */
+  .quantum-table {
+    min-width: 600px !important;
+    font-size: 0.75rem;
+  }
+
+  .quantum-table th {
+    font-size: 0.7rem !important;
+    padding: 8px 6px !important;
+  }
+
+  .quantum-table td {
+    padding: 8px 6px !important;
+  }
+
+  .price-old {
+    font-size: 0.7rem !important;
+  }
+
+  .price-new {
+    font-size: 0.85rem !important;
+  }
+
+  /* 3. Hero区域优化 */
+  .hero h1 {
+    font-size: 2.2rem !important;
+  }
+
+  .hero h2 {
+    font-size: 1.3rem !important;
+  }
+
+  .hero p {
+    font-size: 1rem !important;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  /* 4. FAQ区域压缩 */
+  .faq-item {
+    padding: 16px !important;
+  }
+
+  .faq-grid {
+    gap: 12px !important;
+  }
+
+  .faq-item h3 {
+    font-size: 0.9rem !important;
+  }
+
+  .faq-item p {
+    font-size: 0.82rem !important;
+  }
+
+  /* 5. 施工流程图片压缩 */
+  .process-img {
+    height: 160px !important;
+  }
+
+  .process-content {
+    padding: 16px !important;
+  }
+
+  .process-card h3 {
+    font-size: 1rem !important;
+  }
+
+  .process-card p {
+    font-size: 0.82rem !important;
+  }
+
+  /* 6. 推荐卡片压缩 */
+  .recommend-content {
+    padding: 20px !important;
+  }
+
+  .recommend-content h2 {
+    font-size: 1.4rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  .recommend-content p {
+    font-size: 0.9rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  .recommend-content h4 {
+    font-size: 0.95rem !important;
+  }
+
+  .recommend-content span {
+    font-size: 0.8rem !important;
+  }
+
+  .recommend-content strong {
+    font-size: 1rem !important;
+  }
+
+  .recommend-content > div > div {
+    padding: 12px 14px !important;
+  }
+
+  /* 7. 参数表格容器压缩 */
+  .parameters .quantum-glass-light {
+    padding: 18px !important;
+  }
+
+  .parameters h3 {
+    font-size: 1.3rem !important;
+  }
+
+  /* 8. 优势列表压缩 */
+  .advantage-item {
+    padding: 10px 14px !important;
+  }
+
+  .advantage-item strong {
+    font-size: 0.9rem !important;
+  }
+
+  .advantage-item p {
+    font-size: 0.75rem !important;
+  }
+
+  .advantage-item span {
+    font-size: 1.2rem !important;
+  }
+
+  /* 9. 信任卡片压缩 */
+  .trust-card {
+    padding: 20px 14px !important;
+  }
+
+  .trust-card img {
+    width: 48px !important;
+    height: 48px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .trust-card h3 {
+    font-size: 1rem !important;
+  }
+
+  .trust-card p {
+    font-size: 0.8rem !important;
+  }
+
+  /* 10. 图表容器进一步压缩 */
+  .chart-grid {
+    gap: 20px !important;
+    margin-bottom: 25px !important;
+  }
+
+  .chart-container {
+    padding: 16px !important;
+  }
+
+  .chart-container h4 {
+    font-size: 0.9rem !important;
+    margin-bottom: 12px !important;
+  }
+
+  /* 11. Feature项目压缩 */
+  .feature-content h3 {
+    font-size: 1.4rem !important;
+  }
+
+  .feature-content p {
+    font-size: 0.9rem !important;
+  }
+
+  /* 12. 圣戈班Logo和股票代码压缩 */
+  .sgo-logo {
+    height: 32px !important;
+  }
+
+  .stock-label,
+  .stock-index {
+    font-size: 0.65rem !important;
+  }
+
+  .stock-exchange {
+    font-size: 0.7rem !important;
+  }
+
+  .stock-ticker {
+    font-size: 0.85rem !important;
+  }
+
+  /* 13. 5层结构图压缩 */
+  .structure-diagram {
+    padding: 16px !important;
+    margin: 15px 0 !important;
+  }
+
+  .structure-layer {
+    padding: 10px 12px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .layer-number {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .layer-title {
+    font-size: 0.85rem !important;
+  }
+
+  .layer-desc {
+    font-size: 0.75rem !important;
+  }
+
+  /* 14. 价格可视化区域标题压缩 */
+  #ppf-pricing h3 {
+    font-size: 1.4rem !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* 15. 竞品对比表格区域压缩 */
+  .comparison .quantum-glass-light {
+    padding: 18px !important;
+  }
+
+  /* 16. Hero内容卡片压缩 */
+  .hero-content {
+    padding: 25px !important;
+  }
+}
