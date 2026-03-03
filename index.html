@@ -226,6 +226,58 @@
             background: rgba(30, 138, 154, 0.3) !important;
         }
 
+        /* 列表行内点击指示器（纯CSS，不挤压原内容） */
+        #tab-ppf-pricing .quantum-table tbody td:nth-child(2) {
+            position: relative;
+            padding-right: 72px;
+            /* 为提示按钮预留空间，避免与长文字重叠 */
+        }
+
+        #tab-ppf-pricing .quantum-table tbody td:nth-child(2)::after {
+            content: "点击查看 ›";
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.65rem;
+            color: var(--cyan-deep);
+            border: 1px solid rgba(94, 234, 212, 0.4);
+            padding: 3px 8px;
+            border-radius: 12px;
+            background: rgba(94, 234, 212, 0.08);
+            transition: all 0.25s ease;
+            pointer-events: none;
+            opacity: 0.85;
+            white-space: nowrap;
+            letter-spacing: 0.05em;
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0% {
+                box-shadow: 0 0 0 0 rgba(94, 234, 212, 0.3);
+            }
+
+            70% {
+                box-shadow: 0 0 0 4px rgba(94, 234, 212, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(94, 234, 212, 0);
+            }
+        }
+
+        #tab-ppf-pricing .quantum-table tbody tr:hover td:nth-child(2)::after {
+            background: rgba(94, 234, 212, 0.25);
+            border-color: rgba(94, 234, 212, 0.9);
+            color: #fff;
+            opacity: 1;
+            box-shadow: 0 0 10px rgba(94, 234, 212, 0.4);
+            right: 8px;
+            animation: none;
+            /* 悬停时停止脉冲 */
+        }
+
         .ppf-click-hint {
             font-size: 0.75rem;
             color: var(--cyan-deep);
@@ -575,7 +627,8 @@
                     <div class="grid-2 chart-grid">
                         <!-- 雷达图：前6款产品性能对比 -->
                         <div class="quantum-glass-light chart-container">
-                            <h4 style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
+                            <h4
+                                style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
                                 前6款产品多维性能对比</h4>
                             <div class="chart-wrapper">
                                 <canvas id="radarChart"></canvas>
@@ -584,7 +637,8 @@
 
                         <!-- 柱状图：竞品对比 -->
                         <div class="quantum-glass-light chart-container">
-                            <h4 style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
+                            <h4
+                                style="color: var(--cyan-deep); margin-bottom: 20px; text-align: center; font-size: 1.2rem;">
                                 竞品厚度与质保对比</h4>
                             <div class="chart-wrapper">
                                 <canvas id="barChart"></canvas>
@@ -617,15 +671,18 @@
                             <div
                                 style="background: rgba(255,255,255,0.12); padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.15);">
                                 <div>
-                                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 6px;">🚗 品质均衡型（15-30万）</h4>
-                                    <span style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">推荐：L领路者、L哑光、L PLUS、T系列</span>
+                                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 6px;">🚗 品质均衡型（15-30万）
+                                    </h4>
+                                    <span style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">推荐：L领路者、L哑光、L
+                                        PLUS、T系列</span>
                                 </div>
                                 <strong style="font-size: 1.25rem; color: rgba(255,255,255,0.95);">¥7,980起</strong>
                             </div>
                             <div
                                 style="background: rgba(255,255,255,0.12); padding: 16px 20px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; border: 1px solid rgba(255,255,255,0.15);">
                                 <div>
-                                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 6px;">🚕 高端防护型（30-50万）</h4>
+                                    <h4 style="color: white; font-size: 1.1rem; margin-bottom: 6px;">🚕 高端防护型（30-50万）
+                                    </h4>
                                     <span style="font-size: 0.9rem; color: rgba(255,255,255,0.85);">推荐：T PLUS、S系列</span>
                                 </div>
                                 <strong style="font-size: 1.25rem; color: rgba(255,255,255,0.95);">¥19,800起</strong>
@@ -1177,7 +1234,8 @@
                     </div>
                     <div class="faq-item">
                         <h3><span class="faq-icon">Q：</span>为什么需要贴隐形车衣？</h3>
-                        <p>①保护原厂漆面：新车漆面娇贵,碎石、树枝、钥匙划痕等都会损伤漆面。②保值增值：二手车置换时,完好的原厂漆面可提升车辆估值。③降低养护成本：避免频繁补漆、抛光,长期更省钱。④持久如新：贴膜后车辆外观历久弥新。</p>
+                        <p>①保护原厂漆面：新车漆面娇贵,碎石、树枝、钥匙划痕等都会损伤漆面。②保值增值：二手车置换时,完好的原厂漆面可提升车辆估值。③降低养护成本：避免频繁补漆、抛光,长期更省钱。④持久如新：贴膜后车辆外观历久弥新。
+                        </p>
                     </div>
                     <div class="faq-item">
                         <h3><span class="faq-icon">Q：</span>车衣质保具体"保"什么？</h3>
@@ -1189,11 +1247,13 @@
                     </div>
                     <div class="faq-item">
                         <h3><span class="faq-icon">Q：</span>车衣贴完后如何保养？</h3>
-                        <p>前7天：避免洗车,让胶水充分固化。日常洗车：建议手工洗车或无接触洗车,避免刷子刮擦。定期护理：每3个月使用专用车衣护理液擦拭,保持光泽。避免接触：强酸强碱清洁剂、粗糙毛巾、尖锐物体。</p>
+                        <p>前7天：避免洗车,让胶水充分固化。日常洗车：建议手工洗车或无接触洗车,避免刷子刮擦。定期护理：每3个月使用专用车衣护理液擦拭,保持光泽。避免接触：强酸强碱清洁剂、粗糙毛巾、尖锐物体。
+                        </p>
                     </div>
                     <div class="faq-item">
                         <h3><span class="faq-icon">Q：</span>为什么要选择官方授权施工中心？</h3>
-                        <p>①技师认证：CHCC广州壕马技师均通过量子膜官方认证培训。②无尘车间：专业无尘施工环境,避免灰尘颗粒。③正品保障：官方授权渠道,杜绝假冒伪劣产品。④质保有效：只有在官方授权中心施工,质保才真正有效。</p>
+                        <p>①技师认证：CHCC广州壕马技师均通过量子膜官方认证培训。②无尘车间：专业无尘施工环境,避免灰尘颗粒。③正品保障：官方授权渠道,杜绝假冒伪劣产品。④质保有效：只有在官方授权中心施工,质保才真正有效。
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1613,7 +1673,7 @@
                             },
                             tooltip: {
                                 callbacks: {
-                                    label: function(context) {
+                                    label: function (context) {
                                         var label = context.dataset.label || '';
                                         if (label) {
                                             label += ': ';
@@ -1705,11 +1765,11 @@
                             },
                             tooltip: {
                                 callbacks: {
-                                    title: function(context) {
+                                    title: function (context) {
                                         var fullLabels = ['L PLUS ¥9,980', 'L领路者 ¥7,980', '天穹Pro ¥4,980', '天穹系列 ¥3,980', '3M高光50 ¥8,800', '3M精英版 ¥6,980', '威固V3 ¥8,800', '星际威 ¥6,980', '龙膜G0 ¥8,800', '龙小侠 ¥5,980', 'XPEL PROTEX ¥6,880'];
                                         return fullLabels[context[0].dataIndex];
                                     },
-                                    label: function(context) {
+                                    label: function (context) {
                                         var label = context.dataset.label || '';
                                         if (label) {
                                             label += ': ';
@@ -1727,7 +1787,7 @@
                                         }
                                         return label;
                                     },
-                                    afterLabel: function(context) {
+                                    afterLabel: function (context) {
                                         if (context.datasetIndex === 2) {
                                             return '(厚度×质保/千元价)×10';
                                         }
